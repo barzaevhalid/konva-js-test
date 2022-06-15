@@ -3,10 +3,10 @@ import { Stage, Layer, Text, Transformer } from 'react-konva';
 
 import  "./App.css"
 
-const RenderText = ({shapeProps, isSelected, onSelect, onChange}) => {
+const RenderText = ({shapeProps, onSelect, onChange}) => {
     const shapeRef = useRef();
     const trRef = useRef();
-
+    const [isSelected, setIsSelected] = useState(false)
     useEffect(() => {
         if (isSelected) {
             trRef.current.nodes([shapeRef.current]);
@@ -16,13 +16,13 @@ const RenderText = ({shapeProps, isSelected, onSelect, onChange}) => {
     return (
         <>
         <Text
+            padding={5}
+            onDblClick={() =>setIsSelected(!isSelected)}
             text={shapeProps.text}
             onClick={onSelect}
             ref={shapeRef}
             draggable
             onDragEnd={(e) => {
-                console.log(e.target.x())
-                console.log(shapeProps)
 
                 onChange({
                     ...shapeProps,
@@ -67,12 +67,11 @@ const App = () => {
         x: 50,
         y: 100,
         fontSize: 30,
-        text: 'Вывод',
+        text: '"Вывод кликни 2 раза"',
         draggable: true,
     }
     const [text, setText] = useState(text1)
     const [textHide, setTextHide] = useState(false)
-    const [selected, setSelected] = useState(true)
 
     const fixText = (e) => {
         setText({ ...text1, text: e.target.value })
@@ -83,13 +82,18 @@ const App = () => {
         const url = stageRef.current.toDataURL({pixelRatio: 1 });
         link.current.href = url
     }
+    const hideText = () => {
+        setTextHide(!textHide)
+        setText({ ...text1, text: text1.text})
+
+    }
 
     return (
         <div className='container'>
             <div className='textBlock'>
                {textHide &&  <textarea name="text" onChange={(e) => fixText(e)}></textarea>}
               <div>
-                  <button onClick={() => setTextHide(!textHide)}>{ textHide ? "Закрыть поле" : "Открыть поле ввода текста"}</button>
+                  <button onClick={hideText}>{ textHide ? "Закрыть поле" : "Открыть поле ввода текста"}</button>
                   {textHide &&  <a download="stage.png"  name='stage.png' ref={link}><button onClick={upload} >Сохранить</button></a>}
               </div>
             </div>
@@ -100,7 +104,6 @@ const App = () => {
                       {textHide && <RenderText
                           shapeProps={text}
                           onChange={(newAtrs) => setText(newAtrs)}
-                          isSelected={selected}
                       />}
                   </Layer>
               </Stage>
