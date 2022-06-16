@@ -10,7 +10,7 @@ const App = () => {
         x: 50,
         y: 100,
         fontSize: 30,
-        text: '"Кликни 2 раза"',
+        text: '"Кликни 1 раз"',
         draggable: true,
     }
     const [text, setText] = useState(text1)
@@ -30,7 +30,8 @@ const App = () => {
         setText({ ...text1, text: text1.text})
 
     }
-
+    const fer = useRef(null)
+    console.log(fer)
     return (
         <div className='container'>
             <div className='textBlock'>
@@ -43,8 +44,9 @@ const App = () => {
 
             <div className='canvas'>
               <Stage width={500} height={500}  ref={stageRef}>
-                  <Layer>
+                  <Layer ref={fer}>
                       {textHide && <RenderText
+
                           shapeProps={text}
                           onChange={(newAtrs) => setText(newAtrs)}
                       />}

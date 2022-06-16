@@ -2,7 +2,7 @@ import React from 'react';
 import {useEffect, useRef, useState} from "react";
 import {Text, Transformer} from "react-konva";
 
-const RenderText = ({shapeProps, onSelect, onChange}) => {
+const RenderText = ({shapeProps, onChange}) => {
     const shapeRef = useRef();
     const trRef = useRef();
     const [isSelected, setIsSelected] = useState(false)
@@ -18,14 +18,12 @@ const RenderText = ({shapeProps, onSelect, onChange}) => {
         }
     }, [isSelected, shapeProps]);
 
-
     return (
         <>
             <Text
                 padding={5}
-                onDblClick={() =>setIsSelected(!isSelected)}
+                onClick={() =>setIsSelected(!isSelected)}
                 text={shapeProps.text}
-                onClick={onSelect}
                 ref={shapeRef}
                 draggable
                 onDragEnd={(e) => {
