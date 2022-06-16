@@ -30,8 +30,7 @@ const App = () => {
         setText({ ...text1, text: text1.text})
 
     }
-    const fer = useRef(null)
-    console.log(fer)
+
     return (
         <div className='container'>
             <div className='textBlock'>
@@ -44,7 +43,7 @@ const App = () => {
 
             <div className='canvas'>
               <Stage width={500} height={500}  ref={stageRef}>
-                  <Layer ref={fer}>
+                  <Layer >
                       {textHide && <RenderText
 
                           shapeProps={text}

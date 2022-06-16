@@ -6,9 +6,8 @@ const RenderText = ({shapeProps, onChange}) => {
     const shapeRef = useRef();
     const trRef = useRef();
     const [isSelected, setIsSelected] = useState(false)
-
     useEffect(() => {
-        if(shapeProps.text.length === 0) {
+        if(!shapeProps.text.length) {
             setIsSelected(false)
         }
 
