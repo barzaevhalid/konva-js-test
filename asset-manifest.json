@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/konva-js-test/static/css/main.c3a124cd.css",
-    "main.js": "/konva-js-test/static/js/main.2e1da850.js",
+    "main.js": "/konva-js-test/static/js/main.cbbd1b23.js",
     "index.html": "/konva-js-test/index.html",
     "main.c3a124cd.css.map": "/konva-js-test/static/css/main.c3a124cd.css.map",
-    "main.2e1da850.js.map": "/konva-js-test/static/js/main.2e1da850.js.map"
+    "main.cbbd1b23.js.map": "/konva-js-test/static/js/main.cbbd1b23.js.map"
   },
   "entrypoints": [
     "static/css/main.c3a124cd.css",
-    "static/js/main.2e1da850.js"
+    "static/js/main.cbbd1b23.js"
   ]
 }
